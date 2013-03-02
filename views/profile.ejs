@@ -1,0 +1,72 @@
+<% include partials/header %>
+<% include partials/menu %>
+    <div class="container">
+      <div>
+        <h1>
+          Why not hire <%= user.fullname %>?
+        </h1>
+        <div class="row">
+          <div class="span3 offset1">
+            <p>
+            </p>
+            <p class="user-photo">
+              <img class="img-polaroid" height="240" src="http://www.epitech.eu/intra/photos/<%= user.login %>.jpg"
+              width="200">
+            </p>
+            <p class="user-photo-name">
+              <span class="label label-info">
+                <%= user.fullname %>
+              </span>
+            </p>
+            <p class="user-photo-promo">
+              <span class="label label-info">
+                <%= user.promotion %>
+              </span>
+            </p>
+            <div id="social"><h4>
+              Social:
+            </h4>
+            <% if (user.social.email) { %><p>
+              <a href="mailto:<%= user.social.email %>"><i class="icon-large icon-envelope myicon"></i> Contact me</a>
+            </p><% } else { %><p>
+            <a href="mailto:<%= user.social.email %>"><i class="icon-large icon-envelope myicon"></i> Contact me</a>
+            </p><% } %>
+            <% if (user.social.github) { %><p>
+              <a href="http://twitter.com/<%= user.social.github %>/"><i class="icon-large icon-github myicon"></i> <%= user.social.github %></a>
+            </p><% } %>
+            <% if (user.social.twitter) { %><p>
+              <a href="http://twitter.com/<%= user.social.twitter %>/"><i class="icon-large icon-twitter myicon"></i> <%= user.social.twitter %></a>
+            </p><% } %>
+            <% if (user.social.gplus) { %><p>
+              <a href="<%= user.social.gplus %>"><i class="icon-large icon-google-plus myicon"></i> Google+ profile</a>
+            </p><% } %>
+            <% if (user.social.linkedin) { %><p>
+              <a href="<%= user.social.linkedin %>"><i class="icon-large icon-linkedin myicon"></i> LinkedIn profile</a>
+            </p><% } %>
+            <% if (user.social.viadeo) { %><p>
+              <a href="<%= user.social.viadeo %>">Viadeo profile</a>
+            </p><% } %>
+            </div>
+          </div>
+          <div class="span7">
+            <h3>
+              Dernier emploi:
+            </h3>
+            <p>
+              %USER_LASTJOB%
+            </p>
+            <h3>
+              Description:
+            </h3>
+            <p>
+              %USER_DESCRIPTION%
+            </p>
+            <h3>
+              Related slaves:
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
