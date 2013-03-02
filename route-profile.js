@@ -11,6 +11,6 @@ module.exports = function (req, res, next) {
 		user.slave.login = user.login;
 		user.slave.fullname = user.name;
 		user.slave.promotion = user.promo;
-		return res.render('profile', {user: user.slave});
+		return res.render('profile', { user: user.slave });
 	});
 };
