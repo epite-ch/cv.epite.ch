@@ -31,6 +31,7 @@ var Mongo		= require('./module-mongodb.js');
 	Slave.update = function (login, data, callback) {
 		var query = { login: login };
 		var mod = { $set: { slave: iniparser.parseString(data) } };
+		mod.$set.slave.active = true;
 		return Mongo.Slaves.update(query, mod, callback);
 	}
 
