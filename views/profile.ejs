@@ -3,7 +3,7 @@
 <% include partials/menu %>
     <div class="container">
       <div class="hero-unit">
-        <h1>
+        <h1 class="profile-title">
           Why not hire <%= user.fullname %>?
         </h1>
         <div class="row">
@@ -27,6 +27,9 @@
             <div id="social"><h4>
               About me:
             </h4>
+            <p>
+              <i class="icon-large icon-home myicon"></i> <%= user.city %>
+            </p>
             <% if (user.social.portfolio) { %><p>
               <a href="<%= user.social.portfolio %>"><i class="icon-large icon-suitcase myicon"></i>Portfolio</a>
             </p><% } %>
@@ -36,7 +39,7 @@
             <a href="mailto:<%= user.social.email %>"><i class="icon-large icon-envelope myicon"></i> Contact me</a>
             </p><% } %>
             <% if (user.social.github) { %><p>
-              <a href="http://twitter.com/<%= user.social.github %>/"><i class="icon-large icon-github myicon"></i> <%= user.social.github %></a>
+              <a href="http://github.com/<%= user.social.github %>/"><i class="icon-large icon-github myicon"></i> <%= user.social.github %></a>
             </p><% } %>
             <% if (user.social.twitter) { %><p>
               <a href="http://twitter.com/<%= user.social.twitter %>/"><i class="icon-large icon-twitter myicon"></i> <%= user.social.twitter %></a>
