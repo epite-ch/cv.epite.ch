@@ -58,23 +58,28 @@
             </div>
           </div>
           <div class="span6">
-            <% if (user.description) { %>
-              <% if (user.description.lastjob) { %>
-                <h3>Current/last job:</h3>
+              <h3>Current/last job:</h3>
+              <% if (user.description && user.description.lastjob) { %>
                 <p><%= user.description.lastjob %></p>
-              <% }%>
-              <% if (user.description.about) { %>
-                <h3>About:</h3>
-                <p><%= user.description.about %></p>
+              <% } else { %>
+                <p>N/A</p>
               <% } %>
-              <% if (user.description.favorites) { %>
-                <h3>Favorite technologies:</h3>
+              <h3>About:</h3>
+              <% if (user.description && user.description.about) { %>
+                <p><%= user.description.about %></p>
+              <% } else { %>
+                <p>N/A</p>
+              <% } %>
+              <h3>Favorite technologies:</h3>
+              <% if (user.description && user.description.favorites) { %>
                 <p>
                   <% for (var i = 0; i < user.description.favorites.length; ++i) { %>
                   <span class="label label-info"><i class="icon-tag"></i> <%= user.description.favorites[i] %></span>
-                <% } %></p>
+                  <% } %></p>
+              <% } else { %>
+                <p>Unknown</p>
               <% } %>
-              <% if (user.description.projects) { %>
+              <% if (user.description && user.description.projects) { %>
                 <h3>Projects:</h3>
                 <% var projects = user.description.projects.split(','); %>
                 <% for (var i = 0; i < projects.length; ++i) { %>
@@ -87,9 +92,8 @@
                   <% } %>
                 <% } %>
               <% } %>
-              <h3>Related slaves:</h3>
-              <p>(Coming soon...)</p>
-            <% } %>
+            <h3>Related slaves:</h3>
+            <p>(Coming soon...)</p>
           </div>
         </div>
       </div>
