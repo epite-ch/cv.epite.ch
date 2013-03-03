@@ -75,6 +75,19 @@
                   <span class="label label-info"><i class="icon-tag"></i> <%= user.description.favorites[i] %></span>
                 <% } %></p>
               <% } %>
+              <% if (user.description.projects) { %>
+                <h3>Projects:</h3>
+                <% var projects = user.description.projects.split(','); %>
+                <% for (var i = 0; i < projects.length; ++i) { %>
+                  <% var proj = projects[i].split('|'); %>
+                  <% if (proj[1]) { %><a href="<%= proj[1] %>"><% } %>
+                    <%= proj[0] %>
+                  <% if (proj[1]) { %></a><% } %>
+                  <% if (projects[i + 1]) { %>
+                  <strong>//</strong>
+                  <% } %>
+                <% } %>
+              <% } %>
               <h3>Related slaves:</h3>
               <p>(Coming soon...)</p>
             <% } %>
