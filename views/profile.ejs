@@ -11,8 +11,11 @@
             <p>
             </p>
             <p class="user-photo">
-              <img class="img-polaroid" height="240" src="http://www.epitech.eu/intra/photos/<%= user.login %>.jpg"
-              width="200">
+              <% if (user.picture) { %>
+              <img class="img-polaroid" height="240" src="<%= user.picture %>" width="200">
+              <% } else { %>
+              <img class="img-polaroid" height="240" src="http://www.epitech.eu/intra/photos/<%= user.login %>.jpg" width="200">
+              <% } %>
             </p>
             <p class="user-photo-name">
               <span class="label label-info">
