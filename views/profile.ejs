@@ -28,7 +28,7 @@
               </span>
             </p>
             <div id="social"><h4>
-              About me:
+              Contact:
             </h4>
             <p>
               <i class="icon-large icon-home myicon"></i> <%= user.city %>
@@ -37,9 +37,9 @@
               <a href="<%= user.social.portfolio %>"><i class="icon-large icon-suitcase myicon"></i>Portfolio</a>
             </p><% } %>
             <% if (user.social.email) { %><p>
-              <a href="mailto:<%= user.social.email %>"><i class="icon-large icon-envelope myicon"></i> Contact me</a>
+              <a href="mailto:<%= user.social.email %>"><i class="icon-large icon-envelope myicon"></i> Email</a>
             </p><% } else { %><p>
-            <a href="mailto:<%= user.social.email %>"><i class="icon-large icon-envelope myicon"></i> Contact me</a>
+            <a href="mailto:<%= user.social.email %>"><i class="icon-large icon-envelope myicon"></i> Email</a>
             </p><% } %>
             <% if (user.social.github) { %><p>
               <a href="http://github.com/<%= user.social.github %>/"><i class="icon-large icon-github myicon"></i> <%= user.social.github %></a>
@@ -64,17 +64,19 @@
                 <h3>Current/last job:</h3>
                 <p><%= user.description.lastjob %></p>
               <% }%>
+              <% if (user.description.about) { %>
+                <h3>About:</h3>
+                <p><%= user.description.about %></p>
+              <% } %>
               <% if (user.description.favorites) { %>
                 <h3>Favorite technologies:</h3>
                 <p>
                   <% for (var i = 0; i < user.description.favorites.length; ++i) { %>
-                  <span class="label label-info"><%= user.description.favorites[i] %></span>
+                  <span class="label label-info"><i class="icon-tag"></i> <%= user.description.favorites[i] %></span>
                 <% } %></p>
               <% } %>
-            <h3>Description:</h3>
-            <p>%USER_DESCRIPTION%</p>
-            <h3>Related slaves:</h3>
-            <p>(Coming soon...)</p>
+              <h3>Related slaves:</h3>
+              <p>(Coming soon...)</p>
             <% } %>
           </div>
         </div>
