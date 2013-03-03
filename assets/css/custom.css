@@ -9,3 +9,7 @@ a i { font-size: 14px; text-align: center; }
 .user-photo-promo { margin-top: -28px; text-align:center; }
 .span6 p { margin-top: -10px; }
 .container div h1.profile-title { margin-left: 84px; margin-bottom: 20px; font-size: 42px; }
+.hero-unit { padding-top: 30px; }
+hr.footer { margin-bottom: 5px; border-bottom-color: #bbbbbb; }
+#slave-footer { text-align: justify; }
+
