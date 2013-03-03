@@ -46,6 +46,9 @@
             <% if (user.social.twitter) { %><p>
               <a href="http://twitter.com/<%= user.social.twitter %>/"><i class="icon-large icon-twitter myicon"></i> <%= user.social.twitter %></a>
             </p><% } %>
+            <% if (user.social.facebook) { %><p>
+              <a href="http://www.facebook.com/<%= user.social.facebook %>"><i class="icon-large icon-facebook myicon"></i> Facebook profile</a>
+            </p><% } %>
             <% if (user.social.gplus) { %><p>
               <a href="<%= user.social.gplus %>"><i class="icon-large icon-google-plus myicon"></i> Google+ profile</a>
             </p><% } %>
