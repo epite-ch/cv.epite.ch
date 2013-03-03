@@ -18,21 +18,9 @@ app.configure(function () {
 	});
 	app.use(express.bodyParser());
 	app.use(require('./middleware-assets.js')());
+	app.use(require('./middleware-errors.js')());
 	app.set('views', __dirname + '/views');
 	app.set('view engine', 'ejs');
-	app.use(function (req, res, next) {
-		res.errJson = function (err) {
-			console.log('[ERROR] %s', err);
-			return res.json({status: 'ERROR', error: err});
-		};
-		res.errMongo = function (err) {
-			console.log('[ERROR][MongoDb] %s', err);
-			console.dir(err);
-			err = 'MongoDb error. Error has been logged for analysis, please contact rouyer_a@epitech.net';
-			return res.json({status: 'ERROR', error: err});
-		}
-		return next();
-	});
 	app.param('login', function (req, res, next, login) {
 		if (/^[a-z0-9\-]{1,6}(_[a-z0-9])?$/.test(login)) req.params.user = login;
 		return next();
