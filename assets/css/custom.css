@@ -3,6 +3,7 @@ a i { font-size: 14px; text-align: center; }
 .myicon { width: 24px; }
 #social { padding-top: 5px; padding-left: 30px; }
 .user-photo { text-align: center; }
+.user-photo img { width: 200px; height: 240px; }
 .user-photo-name { margin-top: -263px; height: 240px; text-align:center; }
 .user-photo-promo { margin-top: -28px; text-align:center; }
 .span6 p { margin-top: -10px; }
