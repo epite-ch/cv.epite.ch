@@ -1,16 +1,17 @@
-var url			= require('url');
-var Slave		= require('./object-Slave.js');
+(function () {
+	var url			= require('url');
+	var Slave		= require('./object-Slave.js');
 
-module.exports = function (req, res, next) {
-	var target = req.params.user;
-	return Slave.get(target, function (err, user) {
-		if (err) return res.errMongo(err);
-		if (!user || !user.slave) return next();
+	function routeProfile (req, res, next) {
+		var target = req.params.user;
+		return Slave.get(target, function (err, slave) {
+			if (err) return res.errMongo(err);
+			if (!slave) return next();
 
-		user.slave.city = user.city;
-		user.slave.login = user.login;
-		user.slave.fullname = user.name;
-		user.slave.promotion = user.promo;
-		return res.render('profile', { user: user.slave });
-	});
-};
+			return res.render('profile', { user: slave });
+		});
+	};
+
+
+	module.exports = routeProfile;
+})();

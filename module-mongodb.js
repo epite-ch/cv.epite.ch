@@ -1,13 +1,16 @@
-var mongodb = require('mongodb');
+(function () {
+	var mongodb	= require('mongodb');
+	var LOG		= require('./module-log.js').log('MongoDb');
+	var DIR		= require('./module-log.js').dir('MongoDb');
 
-var collections = [
-	{
-		collection: 'users',
-		prettyName: 'Slaves'
-	}
-];
+	var collections = [
+		{
+			collection: 'users',
+			prettyName: 'Slaves'
+		}
+	];
 
-module.exports = (function () {
+
 	var Mongo = function () {};
 
 	Mongo.connected = false;
@@ -71,32 +74,12 @@ module.exports = (function () {
 			if (typeof err === 'undefined' || err === null) {
 				return;
 			}
-			console.log(place);
-			console.dir(err);
+			LOG(place);
+			DIR(err);
 			return;
 		};
 	};
 
-	Mongo.parallelCalls = function (size, callback) {
-		var self = {};
-		self.len = size;
-		self.callback = callback;
-		self.err = null;
-		self.p = {};
-		this.fill = function (name) {
-			return function (err, result) {
-				if (err) self.err = err;
-				self.p[name] = result;
-				self.len--;
-				if (self.len !== 0) {
-					return;
-				}
-				return self.callback(self.err, self.p);
-			}
-		};
-		return this;
-	};
-
-	return Mongo;
+	module.exports = Mongo;
 })();
 
