@@ -13,20 +13,20 @@
 		if (!(/^[a-z0-9\-]{1,6}(_[a-z0-9])?$/.test(target))) {
 			return res.errJson('Invalid login supplied (' + target + ')');
 		}
-		// CHECK: No harrassing for "target"
-		// WARNING: Check IP too or someone's gonna test ALL fucking logins
-		if (rebuildBucket[target] > new Date(new Date() - 10 * 60 * 1000)) {
-			var duration = rebuildBucket[target].getTime();
-			duration -= new Date(new Date() - 10 * 60 * 1000).getTime();
+		// CHECK: No harrassing
+		var caller = req.connection.remoteAddress;
+		if (rebuildBucket[caller] > new Date(new Date() - 10 * 1000)) {
+			var duration = rebuildBucket[caller].getTime();
+			duration -= new Date(new Date() - 10 * 1000).getTime();
 			duration /= 1000;
-			duration /= 60;
 			duration = Math.ceil(duration);
-			return res.errJson('Please wait ' + duration + ' minutes before trying again for ' + target);
+			return res.errJson('Please wait ' + duration + ' seconds before trying again.');
 		}
 		// SET: Prevent from harrassing server
-		rebuildBucket[target] = new Date();
-		var url = 'http://perso.epitech.eu/~' + target + '/.slave';
+		rebuildBucket[caller] = new Date();
+
 		// Request the slave file
+		var url = 'http://perso.epitech.eu/~' + target + '/.slave';
 		var sentHeaders = false;
 		return http.get(url, function (request) {
 			// In case there is no .slave file, we remove the Slave from database
