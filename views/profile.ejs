@@ -3,7 +3,7 @@
 <% include partials/menu %>
       <div class="hero-unit">
         <h1 class="profile-title">
-          Why not hire <%= user.fullname %>?
+          D&eacute;couvrez <%= user.fullname %>
         </h1>
         <div class="row">
           <div class="span3 offset1">
@@ -33,7 +33,7 @@
               <i class="icon-large icon-home myicon"></i> <%= user.city %>
             </p>
             <% if (user.social.portfolio) { %><p>
-              <a href="<%= user.social.portfolio %>"><i class="icon-large icon-suitcase myicon"></i>Portfolio</a>
+              <a href="<%= user.social.portfolio %>"><i class="icon-large icon-suitcase myicon"></i> Portfolio</a>
             </p><% } %>
             <% if (user.social.email) { %><p>
               <a href="mailto:<%= user.social.email %>"><i class="icon-large icon-envelope myicon"></i> Email</a>
@@ -47,13 +47,13 @@
               <a href="http://twitter.com/<%= user.social.twitter %>/"><i class="icon-large icon-twitter myicon"></i> <%= user.social.twitter %></a>
             </p><% } %>
             <% if (user.social.facebook) { %><p>
-              <a href="http://www.facebook.com/<%= user.social.facebook %>"><i class="icon-large icon-facebook myicon"></i> Facebook profile</a>
+              <a href="http://www.facebook.com/<%= user.social.facebook %>"><i class="icon-large icon-facebook myicon"></i> Profil Facebook</a>
             </p><% } %>
             <% if (user.social.gplus) { %><p>
-              <a href="<%= user.social.gplus %>"><i class="icon-large icon-google-plus myicon"></i> Google+ profile</a>
+              <a href="<%= user.social.gplus %>"><i class="icon-large icon-google-plus myicon"></i> Profil Google+</a>
             </p><% } %>
             <% if (user.social.linkedin) { %><p>
-              <a href="<%= user.social.linkedin %>"><i class="icon-large icon-linkedin myicon"></i> LinkedIn profile</a>
+              <a href="<%= user.social.linkedin %>"><i class="icon-large icon-linkedin myicon"></i> Profil LinkedIn</a>
             </p><% } %>
             <% if (user.social.viadeo) { %><p>
               <a href="<%= user.social.viadeo %>">Viadeo profile</a>
@@ -61,19 +61,19 @@
             </div>
           </div>
           <div class="span6">
-              <h3>Current/last job:</h3>
+              <h3>Job actuel / précédent:</h3>
               <% if (user.description && user.description.lastjob) { %>
                 <p><%= user.description.lastjob %></p>
               <% } else { %>
                 <p>N/A</p>
               <% } %>
-              <h3>About:</h3>
+              <h3>&Agrave; propos:</h3>
               <% if (user.description && user.description.about) { %>
                 <p><%= user.description.about %></p>
               <% } else { %>
                 <p>N/A</p>
               <% } %>
-              <h3>Favorite technologies:</h3>
+              <h3>Technologies:</h3>
               <% if (user.description && user.description.favorites) { %>
                 <p>
                   <% for (var i = 0; i < user.description.favorites.length; ++i) { %>
@@ -95,8 +95,8 @@
                   <% } %>
                 <% } %>
               <% } %>
-            <h3>Related slaves:</h3>
-            <p>(Coming soon...)</p>
+            <h3>Étudiants liés:</h3>
+            <p>(&agrave; venir...)</p>
           </div>
         </div>
       </div>

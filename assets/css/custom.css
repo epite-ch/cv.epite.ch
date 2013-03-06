@@ -11,7 +11,7 @@ a i { font-size: 14px; text-align: center; }
 .container div h1.profile-title { margin-left: 84px; margin-bottom: 20px; font-size: 42px; }
 .hero-unit { padding-top: 30px; }
 hr.footer { margin-bottom: 5px; border-bottom-color: #bbbbbb; }
-#slave-footer { text-align: justify; }
-pre.slavefile span { cursor:pointer; padding: 2px; }
-pre.slavefile span:hover { background-color: #bbbbbb; }
+#cv-footer { text-align: justify; }
+pre.cvfile span { cursor:pointer; padding: 2px; }
+pre.cvfile span:hover { background-color: #bbbbbb; }
 
