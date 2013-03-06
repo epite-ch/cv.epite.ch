@@ -12,4 +12,6 @@ a i { font-size: 14px; text-align: center; }
 .hero-unit { padding-top: 30px; }
 hr.footer { margin-bottom: 5px; border-bottom-color: #bbbbbb; }
 #slave-footer { text-align: justify; }
+pre.slavefile span { cursor:pointer; }
+pre.slavefile span:hover { background-color: #bbbbbb; }
 

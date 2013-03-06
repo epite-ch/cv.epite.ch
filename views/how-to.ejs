@@ -1,5 +1,87 @@
 <% var title = "How to use" %>
 <% include partials/header %>
 <% include partials/menu %>
+      <div class="hero-unit">
+        <h1 class="profile-title">
+          How to make your profile?
+        </h1>
+        <div class="row">
+          <div class="span6">
+            <h4>Sample .slave file:</h4>
+            <div><small>(Hover a line below to understand its usage)</small></div>
+<pre class="slavefile"><span key="picture">picture=http://perso.epitech.eu/~rouyer_a/rouyer_a.png</span>
+
+<span key="[social]">[social]</span>
+<span key="twitter">twitter=joshleaves</span>
+<span key="github">github=joshleaves</span>
+<span key="email">email=josh.guthrie@gmail.com</span>
+<span key="linkedin">linkedin=http://www.linkedin.com/in/arnaudrouyer</span>
+<span key="gplus">gplus=https://plus.google.com/100992466097396687731/</span>
+<span key="facebook">facebook=theres.no.use.in.username</span>
+<span key="portfolio">portfolio=http://dreamleaves.org/</span>
+
+<span key="[description]">[description]</span>
+<span key="lastjob">lastjob="Rad Engine Developer" for HangPic</span>
+<span key="favorites">favorites=nodejs,mongodb,ejs,bootstrap</span>
+<span key="about">about=I love servers, I love mashups, I love APIs, I love node.js, I love javascript,... Right now I am developing the HangPic game API. Come play against us!</span>
+<span key="projects">projects=MapsTube|http://mapstube.dreamleaves.org,VisitHere,EpiLOL|http://lol.epite.ch,HangPic|http://hangpic.com/</span>
+</pre>
+          </div>
+          <div class="span4">
+            <h4>Explaination:</h4>
+            <div id="hints">
+              <h5 id="hints-title">The .slave file</h5>
+              <div id="hints-text" style="text-align:justify;">
+                ...
+            </div>
+          </div>
+        </div>
+      </div>
+<script type="text/javascript">
+	var pre			= document.getElementsByTagName('pre')[0];
+	var spans		= pre.getElementsByTagName('span');
+	var hintsTitle	= document.getElementById('hints-title');
+	var hintsText	= document.getElementById('hints-text');
+	var hints = {
+		'default': '<p>All the information displayed on your public profile is taken from your .slave file which is read just like a standard .ini file.</p><p>Once your .slave file is filled with the informations you want to give out, simply give us a curl:</p><p><code>curl slaves.epite.ch --data login=yourlogin</code></p><p>You should get a reply confirming the success of your operation.</p>',
+		'picture': '<p>Should contain the url to a 200x240px picture to serve as your avatar. Url should be prefixed with http://</p><p>If omitted, the picture displayed on your profile will fall back to your {Epitech} Intranet photo.</p>',
+		'social': '<p>This section contains  your social links.</p><p>If you don\'t possess an account for one of these social networks, just remove its key from your .slave file.</p><p>Attention: Removing the "[social]" header will prevent the parser from seeing any of the following keys as a social link.</p>',
+		'twitter': '<p>Your Twitter username.</p></p>Can\'t be any simpler :)</p>',
+		'github': '<p>Your GitHub username.</p><p>Now how can we make it easier? ;)</p>',
+		'email': '<p>The email address where you want to be reached.</p><p>If omitted, will automatically be filled with your {Epitech} mail address as login_x@epitech.net</p>',
+		'linkedin': '<p>Your LinkedIn profile.</p><p>The full url to your profile (prefixed with http://) is required.</p>',
+		'gplus': '</p>Your Google+ profile.</p><p>The full url to your profile (prefixed with http://) is required.</p>',
+		'facebook': '<p>Your Facebook username.</p><p>Only your username (or numbered userid) is required there.</p>',
+		'portfolio': '<p>Your own personal space.</p><p>It goes without saying, you should prefix it with http:// :)',
+		'description': '<p>This section contains informations about you.</p><p>Attention: Removing the "[description]" header will prevent the parser from seeing any of the following keys as one of the expected keys.</p>',
+		'lastjob': '<p>Tell us more about your last/current job? :)</p>',
+		'favorites': '<p>List of technologies you like.</p><p>Type them as tag-friendly strings separated by a comma. Our future "tags" feature will thank you.</p>',
+		'about': '<p>Go wild.</p></p>Go ahead and tell these guys why they want to hire you but don\'t know it yet.</p>',
+		'projects': '<p>Past projects list.</p><p>List of projects you may want to show off. The pattern is rather simple:</p><p><code>project name|optional url,optional second project</code></p><p>And again, prefix those urls, will you.</p>'
+	};
+
+	showHints('default')();
+	pre.addEventListener('mouseout', showHints('default'), false);
+	for (var i = 0; i < spans.length; ++i) {
+		var key = spans[i].getAttribute('key');
+		spans[i].addEventListener('mouseover', showHints(key), false);
+	};
+
+	function showHints (key) {
+		var type = '" attribute';
+		if (key[0] === '[') {
+			type = '" section';
+			key = key.substr(1, key.length - 2);
+		}
+		var title = 'The "' + key + type;
+		if (key === 'default') {
+			title = 'The .slave file';
+		}
+		return function () {
+			hintsTitle.innerHTML = title;
+			hintsText.innerHTML = hints[key];
+		};
+	};
+</script>
 
 <% include partials/footer %>

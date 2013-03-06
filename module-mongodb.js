@@ -10,7 +10,6 @@
 		}
 	];
 
-
 	var Mongo = function () {};
 
 	Mongo.connected = false;
