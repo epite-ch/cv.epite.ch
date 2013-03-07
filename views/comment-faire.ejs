@@ -8,7 +8,7 @@
         <div class="row">
           <div class="span6">
             <h4>Exemple de fichier .cv::</h4>
-            <div><small>(Hover a line below to understand its usage)</small></div>
+            <div><small>(Passez la souris sur une ligne pour voir son utilisation)</small></div>
 <pre class="cvfile"><span key="picture">picture=http://perso.epitech.eu/~rouyer_a/rouyer_a.png</span>
 
 <span key="[social]">[social]</span>
@@ -19,6 +19,7 @@
 <span key="gplus">gplus=https://plus.google.com/100992466097396687731/</span>
 <span key="facebook">facebook=theres.no.use.in.username</span>
 <span key="portfolio">portfolio=http://dreamleaves.org/</span>
+<span key="viadeo">viadeo=</span>
 
 <span key="[description]">[description]</span>
 <span key="lastjob">lastjob="Rad Engine Developer" for HangPic</span>
@@ -44,21 +45,22 @@
 	var hintsTitle	= document.getElementById('hints-title');
 	var hintsText	= document.getElementById('hints-text');
 	var hints = {
-		'default': '<p>All the information displayed on your public profile is taken from your .cv file which is read just like a standard .ini file.</p><p>Once your .cv file is filled with the informations you want to give out, simply put it on your /www/ folder (on the {Epitech} AFS server) and give us a curl:</p><p><code>curl cv.epite.ch --data login=yourlogin</code></p><p>You should get a reply confirming the success of your operation.</p>',
-		'picture': '<p>Should contain the url to a 200x240px picture to serve as your avatar. Url should be prefixed with http://</p><p>If omitted, the picture displayed on your profile will fall back to your {Epitech} Intranet photo.</p>',
-		'social': '<p>This section contains  your social links.</p><p>If you don\'t possess an account for one of these social networks, just remove its key from your .cv file.</p><p>Attention: Removing the "[social]" header will prevent the parser from seeing any of the following keys as a social link.</p>',
-		'twitter': '<p>Your Twitter username.</p></p>Can\'t be any simpler :)</p>',
-		'github': '<p>Your GitHub username.</p><p>Now how can we make it easier? ;)</p>',
-		'email': '<p>The email address where you want to be reached.</p><p>If omitted, will automatically be filled with your {Epitech} mail address as login_x@epitech.net</p>',
-		'linkedin': '<p>Your LinkedIn profile.</p><p>The full url to your profile (prefixed with http://) is required.</p>',
-		'gplus': '</p>Your Google+ profile.</p><p>The full url to your profile (prefixed with http://) is required.</p>',
-		'facebook': '<p>Your Facebook username.</p><p>Only your username (or numbered userid) is required there.</p>',
-		'portfolio': '<p>Your own personal space.</p><p>It goes without saying, you should prefix it with http:// :)',
-		'description': '<p>This section contains informations about you.</p><p>Attention: Removing the "[description]" header will prevent the parser from seeing any of the following keys as one of the expected keys.</p>',
-		'lastjob': '<p>Tell us more about your last/current job? :)</p>',
-		'favorites': '<p>List of technologies you like.</p><p>Type them as tag-friendly strings separated by a comma. Our future "tags" feature will thank you.</p>',
-		'about': '<p>Go wild.</p></p>Go ahead and tell these guys why they want to hire you but don\'t know it yet.</p>',
-		'projects': '<p>Past projects list.</p><p>List of projects you may want to show off. The pattern is rather simple:</p><p><code>project name|optional url,optional second project</code></p><p>And again, prefix those urls, will you.</p>'
+		'default': '<p>Toutes les informations affichées sur votre profil public sont prises de votre fichier .cv, lequel est interprété comme un fichier .ini standard.</p><p>Une fois que votre fichier .cv est rempli avec les informations que vous voulez donner, placez-le dans votre dossier /www/ (sur l\'AFS) et passez-nous un curl:</p><p><code>curl cv.epite.ch --data login=yourlogin</code></p><p>Vous obtiendrez alors un message vous informant du succès de l\'opération.</p>',
+		'picture': '<p>Un lien vers votre photo (200x240px) afin de vous prsenter.</p><p>Si ce champ n\'est pas renseigné, votre photo de profil sera votre photo {Epitech} par défaut.</p>',
+		'social': '<p>Cette section contient les liens vers vos profils sur les réseaux sociaux.</p><p>Si vous ne possédez pas de compte pour l\'un de ces réseaux, retirez juste le combo clé/valeur correspondant.</p><p>Attention: Retirer le header "[social]" empêchera le parseur de reconnaître les clés/valeurs suivantes.</p>',
+		'twitter': '<p>Votre pseudo Twitter.</p><p>Rien de plus simple :)</p>',
+		'github': '<p>Votre pseudo GitHub.</p><p>Quoi de plus facile? ;)</p>',
+		'email': '<p>L\'email sur lequel vous voulez être contacté.</p><p>Si ce champ n\'est pas renseigné, votre email {Epitech} par défaut (login_x@epitech.net) sera donné à la place.</p>',
+		'linkedin': '<p>Votre profil LinkedIn.</p><p>Entrez l\'url complète vers votre profil.</p>',
+		'gplus': '</p>Votre profil Google+.</p><p>Entre l\'url complète vers votre profil.</p>',
+		'facebook': '<p>Votre pseudo Facebook.</p><p>Si vous n\'avez pas de pseudo, rentrez votre ID d\'utilisateur.</p>',
+		'portfolio': '<p>Votre espace personnel.</p><p>Votre portfolio, votre blog,... Faites-vous plaisir!</p>',
+		'viadeo': '<p>Votre profil Viadeo</p>Entre l\'url complètre vers votre profil.</p>',
+		'description': '<p>Cette section contient vos informations.</p><p>Comme pour [social], retirer le header "[description]" empêchera le parseur de prendre en compte correctement les sous-clés correspondantes.</p>',
+		'lastjob': '<p>Dites-nous en plus sur votre dernier emploi (ou l\'actuel!)</p>',
+		'favorites': '<p>Les technologies que vous aimez.</p><p>Séparez-les par des virgules et soyez "tag-friendly" (genre "nodejs" pour "Node.JS"), la future fonction de recherche par "tags" vous remerciera ;)</p>',
+		'about': '<p>Soyez fous!</p></p>Lâchez-vous et dites au monde pourquoi vous êtes LE développeur que tout lde monde voudrait embaucher!</p>',
+		'projects': '<p>Vos projets.</p><p>Une liste de vos projets, ça fait toujours son petit effet! Le pattern est plutôt simple: séparez vos projets par des virgules et (optionnellement) ajoutez un "|" suivi d\'une url pour lier à ce projet. Exemple:</p><p><code>nom du projet|url,un second projet sans url</code></p>'
 	};
 
 	showHints('default')();
@@ -69,12 +71,12 @@
 	};
 
 	function showHints (key) {
-		var type = '" attribute';
+		var type = 'L\'attribut "';
 		if (key[0] === '[') {
-			type = '" section';
+			type = 'La section "';
 			key = key.substr(1, key.length - 2);
 		}
-		var title = 'The "' + key + type;
+		var title = type + key + '"';
 		if (key === 'default') {
 			title = 'Le fichier .cv';
 		}

@@ -1,6 +1,15 @@
 <% var title = user.fullname; %>
 <% include partials/header %>
 <% include partials/menu %>
+<%
+function renderUrl (url) {
+  if ((url.indexOf('http://') !== 0) && (url.indexOf('https://') !== 0)) {
+    return 'http://' + url;
+  }
+  return url;
+}
+
+%>
       <div class="hero-unit">
         <h1 class="profile-title">
           D&eacute;couvrez <%= user.fullname %>
@@ -11,7 +20,8 @@
             </p>
             <p class="user-photo">
               <% if (user.picture) { %>
-              <img class="img-polaroid" height="240" src="<%= user.picture %>" width="200">
+              <% if (user.picture.indexOf('http') !== 0) user.picture = 'http://' + user.picture; %>
+              <img class="img-polaroid" height="240" src="<%= renderUrl(user.picture) %>" width="200">
               <% } else { %>
               <img class="img-polaroid" height="240" src="http://www.epitech.eu/intra/photos/<%= user.login %>.jpg" width="200">
               <% } %>
@@ -33,7 +43,7 @@
               <i class="icon-large icon-home myicon"></i> <%= user.city %>
             </p>
             <% if (user.social.portfolio) { %><p>
-              <a href="<%= user.social.portfolio %>"><i class="icon-large icon-suitcase myicon"></i> Portfolio</a>
+              <a href="<%= renderUrl(user.social.portfolio) %>"><i class="icon-large icon-suitcase myicon"></i> Portfolio</a>
             </p><% } %>
             <% if (user.social.email) { %><p>
               <a href="mailto:<%= user.social.email %>"><i class="icon-large icon-envelope myicon"></i> E-mail</a>
@@ -50,13 +60,13 @@
               <a href="http://www.facebook.com/<%= user.social.facebook %>"><i class="icon-large icon-facebook myicon"></i> Profil Facebook</a>
             </p><% } %>
             <% if (user.social.gplus) { %><p>
-              <a href="<%= user.social.gplus %>"><i class="icon-large icon-google-plus myicon"></i> Profil Google+</a>
+              <a href="<%= renderUrl(user.social.gplus) %>"><i class="icon-large icon-google-plus myicon"></i> Profil Google+</a>
             </p><% } %>
             <% if (user.social.linkedin) { %><p>
-              <a href="<%= user.social.linkedin %>"><i class="icon-large icon-linkedin myicon"></i> Profil LinkedIn</a>
+              <a href="<%= renderUrl(user.social.linkedin) %>"><i class="icon-large icon-linkedin myicon"></i> Profil LinkedIn</a>
             </p><% } %>
             <% if (user.social.viadeo) { %><p>
-              <a href="<%= user.social.viadeo %>">Profil Viadeo</a>
+              <a href="<%= renderUrl(user.social.viadeo) %>">Profil Viadeo</a>
             </p><% } %>
             </div>
           </div>
@@ -83,11 +93,11 @@
                 <p>(Non renseigné)</p>
               <% } %>
               <% if (user.description && user.description.projects) { %>
-                <h3>Projecs:</h3>
+                <h3>Projets:</h3>
                 <% var projects = user.description.projects.split(','); %>
                 <% for (var i = 0; i < projects.length; ++i) { %>
                   <% var proj = projects[i].split('|'); %>
-                  <% if (proj[1]) { %><a href="<%= proj[1] %>"><% } %>
+                  <% if (proj[1]) { %><a href="<%= renderUrl(proj[1]) %>"><% } %>
                     <%= proj[0] %>
                   <% if (proj[1]) { %></a><% } %>
                   <% if (projects[i + 1]) { %>

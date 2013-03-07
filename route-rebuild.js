@@ -44,7 +44,7 @@
 				sentHeaders = true;
 				return Etudiant.update(target, data, function (err) {
 					if (err) return res.errMongo(err);
-					return res.errJson('Fichier .cv mis à jour avec succès pour ' + target + '!');
+					return res.json({status: 'SUCCESS', message: 'Fichier .cv mis à jour avec succès pour ' + target + '!'});
 				});
 			});
 			request.on('error', function (err) {
