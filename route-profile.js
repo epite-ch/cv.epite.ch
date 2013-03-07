@@ -1,14 +1,13 @@
 (function () {
 	var url			= require('url');
-	var Slave		= require('./object-Slave.js');
+	var Etudiant	= require('./object-Etudiant.js');
 
 	function routeProfile (req, res, next) {
 		var target = req.params.user;
-		return Slave.get(target, function (err, slave) {
+		return Etudiant.get(target, function (err, cv) {
 			if (err) return res.errMongo(err);
-			if (!slave) return next();
-
-			return res.render('profile', { user: slave });
+			if (!cv) return next();
+			return res.render('profil', { user: cv });
 		});
 	};
 

@@ -35,16 +35,16 @@
 	_E('Setting up routes');
 
 	// POST route
-	app.post('*',		require('./route-rebuild.js'));
+	app.post('*',				require('./route-rebuild.js'));
 	// GET routes (Static views)
-	app.get('/',		staticView('home'));
-	app.get('/about',	staticView('about'));
-	app.get('/contact',	staticView('contact'));
-	app.get('/how-to',	staticView('how-to'));
+	app.get('/',				staticView('home'));
+	app.get('/a-propos',		staticView('a-propos'));
+	app.get('/contact',			staticView('contact'));
+	app.get('/comment-faire',	staticView('comment-faire'));
 
 	// GET routes (Dynamic views)
-	app.get('/random',	require('./route-random.js'));
-	app.get('/:login',	require('./route-profile.js'));
+	app.get('/roulette',		require('./route-random.js'));
+	app.get('/:login',			require('./route-profile.js'));
 
 	// GET 404 (What should we do? 404 page or just redirect to home?)
 	//app.get('*',		staticView('404'));

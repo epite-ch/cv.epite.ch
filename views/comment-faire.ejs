@@ -3,13 +3,13 @@
 <% include partials/menu %>
       <div class="hero-unit">
         <h1 class="profile-title">
-          How to make your profile?
+          Comment déposer mon profil?
         </h1>
         <div class="row">
           <div class="span6">
-            <h4>Sample .slave file:</h4>
+            <h4>Exemple de fichier .cv::</h4>
             <div><small>(Hover a line below to understand its usage)</small></div>
-<pre class="slavefile"><span key="picture">picture=http://perso.epitech.eu/~rouyer_a/rouyer_a.png</span>
+<pre class="cvfile"><span key="picture">picture=http://perso.epitech.eu/~rouyer_a/rouyer_a.png</span>
 
 <span key="[social]">[social]</span>
 <span key="twitter">twitter=joshleaves</span>
@@ -30,7 +30,7 @@
           <div class="span4">
             <h4>Explanation:</h4>
             <div id="hints">
-              <h5 id="hints-title">The .slave file</h5>
+              <h5 id="hints-title">Le fichier .cv</h5>
               <div id="hints-text" style="text-align:justify;">
                 ...
             </div>
@@ -44,9 +44,9 @@
 	var hintsTitle	= document.getElementById('hints-title');
 	var hintsText	= document.getElementById('hints-text');
 	var hints = {
-		'default': '<p>All the information displayed on your public profile is taken from your .slave file which is read just like a standard .ini file.</p><p>Once your .slave file is filled with the informations you want to give out, simply put it on your /www/ folder (on the {Epitech} AFS server) and give us a curl:</p><p><code>curl slaves.epite.ch --data login=yourlogin</code></p><p>You should get a reply confirming the success of your operation.</p>',
+		'default': '<p>All the information displayed on your public profile is taken from your .cv file which is read just like a standard .ini file.</p><p>Once your .cv file is filled with the informations you want to give out, simply put it on your /www/ folder (on the {Epitech} AFS server) and give us a curl:</p><p><code>curl cv.epite.ch --data login=yourlogin</code></p><p>You should get a reply confirming the success of your operation.</p>',
 		'picture': '<p>Should contain the url to a 200x240px picture to serve as your avatar. Url should be prefixed with http://</p><p>If omitted, the picture displayed on your profile will fall back to your {Epitech} Intranet photo.</p>',
-		'social': '<p>This section contains  your social links.</p><p>If you don\'t possess an account for one of these social networks, just remove its key from your .slave file.</p><p>Attention: Removing the "[social]" header will prevent the parser from seeing any of the following keys as a social link.</p>',
+		'social': '<p>This section contains  your social links.</p><p>If you don\'t possess an account for one of these social networks, just remove its key from your .cv file.</p><p>Attention: Removing the "[social]" header will prevent the parser from seeing any of the following keys as a social link.</p>',
 		'twitter': '<p>Your Twitter username.</p></p>Can\'t be any simpler :)</p>',
 		'github': '<p>Your GitHub username.</p><p>Now how can we make it easier? ;)</p>',
 		'email': '<p>The email address where you want to be reached.</p><p>If omitted, will automatically be filled with your {Epitech} mail address as login_x@epitech.net</p>',
@@ -76,7 +76,7 @@
 		}
 		var title = 'The "' + key + type;
 		if (key === 'default') {
-			title = 'The .slave file';
+			title = 'Le fichier .cv';
 		}
 		return function () {
 			hintsTitle.innerHTML = title;

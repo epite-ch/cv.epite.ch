@@ -6,7 +6,7 @@
 	var collections = [
 		{
 			collection: 'users',
-			prettyName: 'Slaves'
+			prettyName: 'Etudiants'
 		}
 	];
 

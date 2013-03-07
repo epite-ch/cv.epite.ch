@@ -2,7 +2,7 @@
 // File: module-log.js
 // Path: /
 //
-// Logging module for Slaves. Wraps calls to console.log() and console.dir() to
+// Logging module for cv.epite.ch: Wraps calls to console.log and console.dir to
 // add the module the logging was called from.
 //
 // This module works by calling custom functions to call. IE:

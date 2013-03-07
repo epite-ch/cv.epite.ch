@@ -1,10 +1,10 @@
 (function () {
-	var Slave = require('./object-Slave.js');
+	var Etudiant = require('./object-Etudiant.js');
 
 	function routeRandom (req, res) {
-		return Slave.random(function (err, user) {
+		return Etudiant.random(function (err, user) {
 			if (err) return res.errMongo(err);
-			if (!user) return res.errJson('No more users...');
+			if (!user) return res.errJson('Pas de CVs...');
 			return res.redirect('/' + user.login);
 		});
 	};
